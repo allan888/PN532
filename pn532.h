@@ -12,4 +12,5 @@ typedef struct {
 } result;
 result build_inlistpassivetarget_command();
 result build_sam_configuration_command();
+result build_template(uint8_t* payload,int payload_len);
 #endif //PN532_PN532_H

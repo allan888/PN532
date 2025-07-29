@@ -14,6 +14,33 @@ result build_sam_configuration_command() {
     int payload_len = sizeof(payload);
     return build_template(payload,payload_len);
 }
+result build_authenticate_keyA(const uint8_t* uid,const uint8_t* keyA,uint8_t block){
+    uint8_t payload[15]={0xD4,0x40,0x01,0x60};
+    payload[4]=block;
+    for(int i=0;i<6;i++){
+        payload[5+i]=keyA[i];
+    }
+    for(int i=0;i<4;i++){
+        payload[11+i]=uid[i];
+    }
+    return build_template(payload,15);
+}
+result build_authenticate_keyB(const uint8_t* uid,const uint8_t* keyB,uint8_t block){
+    uint8_t payload[15]={0xD4,0x40,0x01,0x61};
+    payload[4]=block;
+    for(int i=0;i<6;i++){
+        payload[5+i]=keyB[i];
+    }
+    for(int i=0;i<4;i++){
+        payload[11+i]=uid[i];
+    }
+    return build_template(payload,15);
+}
+result build_read_card(uint8_t block){
+    uint8_t payload[5] = {0xD4,0x40,0x01,0x30};
+    payload[4] = block;
+    return build_template(payload,5);
+}
 result build_template(uint8_t* payload,int payload_len) {
     result r;
     r.len = 7 + payload_len; // 00 FF LEN LCS ... DCS 00

@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.28)
+project(PN532 C)
+
+set(CMAKE_C_STANDARD 23)
+
+add_executable(PN532 main.c
+        pn532.c
+        pn532.h)

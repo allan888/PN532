@@ -108,7 +108,7 @@ int CopyIntoClipboard(result r){
 
     size_t length = strlen(final) + 1;
 
-    if(!OpenClipboard(nullptr)){
+    if(!OpenClipboard(NULL)){
         printf(RED "Î´´ò¿ª¼ôÌù°å\n" RESET);
         return -1;
     }

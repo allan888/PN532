@@ -1,3 +1,0 @@
-D:/C Project/PN532/cmake-build-debug/CMakeFiles/PN532.dir
-D:/C Project/PN532/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/C Project/PN532/cmake-build-debug/CMakeFiles/rebuild_cache.dir

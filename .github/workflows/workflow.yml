@@ -2,8 +2,7 @@ name: workflow.yml
 on:
   push:
     tags:
-      - 'v0.*'
-      - 'draft-*'
+      - 'v*'
 
 jobs:
   build:

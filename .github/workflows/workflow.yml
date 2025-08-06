@@ -1,5 +1,9 @@
 name: workflow.yml
-on: push
+on:
+  push:
+    tags:
+      - 'v*'
+      - 'draft-*'
 
 jobs:
   build:
@@ -15,22 +19,11 @@ jobs:
         with:
           name: executable
           path: build/PN532.exe
-  release:
-    needs: build  # 依赖 build 任务
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: executable
 
-      - name: Create Release
+      - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            *.exe  # 上传所有 exe 文件
-          draft: false  # 直接发布，不存为草稿
-          generate_release_notes: true  # 自动生成 Release Notes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用默认 token
+          files: build/*
+          draft: true
+          fail_on_unmatched_files: true
 

@@ -13,11 +13,6 @@ jobs:
       - run: mkdir build
       - run: cmake -B build -DCMAKE_CXX_STANDARD=11
       - run: cmake --build build
-      - name: Upload
-        uses: actions/upload-artifact@v3
-        with:
-          name: executable
-          path: build/PN532.exe
 
       - name: Release
         uses: softprops/action-gh-release@v1

@@ -5,5 +5,7 @@ jobs:
   job1:
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v4
       - run: ls
-      - run : node --version
+      - run: mkdir build
+      - run: cmake ..
